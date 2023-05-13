@@ -1,0 +1,28 @@
+﻿@model CurrencyLot
+
+<h2>Add Lot</h2>
+
+<form asp-action="Create" method="post">
+    <span asp-validation-summary="Model"></span>
+    <div class="mb-3">
+        <label asp-for="Currency" class="form-label">Currency:</label>
+        <select asp-for="Currency" class="form-select">
+            <option selected>Open this select menu</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="CAD">CAD</option>
+            <option value="CNY">CNY</option>
+            <option value="SEK">SEK</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Amount" class="form-label">Amount:</label>
+        <input asp-for="Amount" class="form-control" type="number"/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SellerName" class="form-label">Seller name:</label>
+        <input asp-for="SellerName" class="form-control" />
+    </div>
+    <input type="submit" class="btn btn-outline-primary" value="Add" />
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to menu</a>
+</form>

@@ -1,0 +1,42 @@
+﻿@model GetLotViewModel
+
+<form asp-action="Get" method="get">
+    <span asp-validation-summary="Model"></span>
+    <div class="mb-3">
+        <label class="form-label">Currency:</label>
+        <select asp-for="Currency" class="form-select" name="currency">
+            <option selected value="null">Open this select menu</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="CAD">CAD</option>
+            <option value="CNY">CNY</option>
+            <option value="SEK">SEK</option>
+        </select>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Search" />
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>Seller Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lot in Model.AzureLots)
+        {
+            <tr>
+                <td>@lot.Lot.Currency</td>
+                <td>@lot.Lot.Amount</td>
+                <td>@lot.Lot.SellerName</td>
+                <td>
+                    <a asp-action="Buy" class="btn btn-outline-warning" asp-route-id="@lot">Buy lot</a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Back to menu</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
